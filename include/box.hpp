@@ -1,21 +1,23 @@
 #pragma once
 #include "vec2.hpp"	
 #include "world.hpp"
+#include <raylib.h>
 
 class Box {
 	public:
-		Box(Vec2 position, float width, float height, float mass, float restitution)
+		Box(Vec2 position, float width, float height, float mass, float restitution, Color color)
 			: position(position),
 			size({width, height}),
 			velocity({0, 0}),
 			acceleration({0, -9.81}),
 			restitution(restitution),
-			mass(mass)
+			mass(mass),
+			color(color)
 		{}
 
-		const Vec2& GetPosition() const { return position; }
+		const Vec2& Position() const { return position; }
 
-		const Vec2& GetSize() const { return size; }
+		const Vec2& Size() const { return size; }
 
 		void UpdateMovement(float dt) {
 			velocity += acceleration * dt;
@@ -23,6 +25,8 @@ class Box {
 		}
 
 		void BorderCollision(const WorldBounds& bounds);
+
+		const Color& BoxColor() const { return color; }
 			
 	private:
 		Vec2 position;
@@ -31,4 +35,5 @@ class Box {
 		Vec2 acceleration;
 		float restitution;
 		float mass;
+		Color color;
 };

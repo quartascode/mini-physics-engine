@@ -22,11 +22,11 @@ class SimCamera {
 
 		float WorldToScreen(float length) const { return length * zoom; }
 
-		int GetScreenWidth() const { return screenWidth; }
+		int ScreenWidth() const { return screenWidth; }
 
-		int GetScreenHeight() const { return screenHeight; }
+		int ScreenHeight() const { return screenHeight; }
 
-		float GetZoom() const { return zoom; }
+		float Zoom() const { return zoom; }
 
 	private:
 		Vec2 position;

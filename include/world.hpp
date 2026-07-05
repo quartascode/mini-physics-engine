@@ -3,9 +3,9 @@
 
 struct WorldBounds {
 	WorldBounds(const SimCamera& cam) {
-		right = cam.GetScreenWidth() / (cam.GetZoom() * 2);
+		right = cam.ScreenWidth() / (cam.Zoom() * 2);
 		left = -right;
-		up = cam.GetScreenHeight() / (cam.GetZoom() * 2);
+		up = cam.ScreenHeight() / (cam.Zoom() * 2);
 		down = -up;
 	}
 
