@@ -7,6 +7,7 @@ class RigidBody {
 			mass(mass),
 			restitution(restitution)
 			{}
+
 	private:
 		Vec2 position;
 		Vec2 velocity;

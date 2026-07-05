@@ -1,6 +1,8 @@
 #include "box.hpp"
 #include "raylib.h"
 #include "renderer.hpp"
+#include "world.hpp"
+#include "physics.hpp"
 #include <vector>
 
 int main() {
@@ -20,7 +22,7 @@ int main() {
 
 		for (Box& box : boxes) {
 			box.UpdateMovement(dt);
-			box.BorderCollision(bounds);
+			Physics::BorderCollision(bounds, box);
 		}
 
 
