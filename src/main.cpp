@@ -1,5 +1,7 @@
+#include "box.hpp"
 #include "raylib.h"
 #include "renderer.hpp"
+#include <vector>
 
 int main() {
 	SimCamera cam({0, 0}, 80.0f, 800, 600);
@@ -8,14 +10,20 @@ int main() {
 
 	Renderer renderer;
 
-	Box box({0, 0}, 0.5, 0.5, 20);
+	std::vector<Box> boxes;
+	boxes.emplace_back(Box({1, 1}, 0.5, 0.5, 20, 0.1));
+	boxes.emplace_back(Box({-1, 1}, 1.6, 1, 20, 0.1));
 
 	while (!WindowShouldClose()) {
 
 		float dt = GetFrameTime();
-		box.UpdateMovement(dt);
-		box.BorderCollision(bounds);
 
-		renderer.Render(box, cam);
+		for (Box& box : boxes) {
+			box.UpdateMovement(dt);
+			box.BorderCollision(bounds);
+		}
+
+
+		renderer.Render(boxes, cam);
 	}
 }

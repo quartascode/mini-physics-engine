@@ -4,12 +4,12 @@
 
 class Box {
 	public:
-		Box(Vec2 position, float width, float height, float mass)
+		Box(Vec2 position, float width, float height, float mass, float restitution)
 			: position(position),
 			size({width, height}),
 			velocity({0, 0}),
 			acceleration({0, -9.81}),
-			restitution(0.1),
+			restitution(restitution),
 			mass(mass)
 		{}
 
