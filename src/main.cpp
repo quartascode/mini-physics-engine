@@ -1,8 +1,6 @@
 #include "box.hpp"
 #include "raylib.h"
 #include "renderer.hpp"
-#include "world.hpp"
-#include "physics.hpp"
 #include <vector>
 
 int main() {
@@ -13,16 +11,16 @@ int main() {
 	Renderer renderer;
 
 	std::vector<Box> boxes;
-	boxes.emplace_back(Box({1, 1}, 0.5, 0.5, 20, 0.1, RED));
-	boxes.emplace_back(Box({-1, 1}, 1.6, 1, 20, 0.1, ORANGE));
+	boxes.emplace_back(Box(0.5, 0.5, BLUE, {0, 0}, 20, 0.1));
+	boxes.emplace_back(Box(1.0, 0.8, ORANGE, {-1, -1}, 90, 0.1));
 
 	while (!WindowShouldClose()) {
 
 		float dt = GetFrameTime();
 
 		for (Box& box : boxes) {
-			box.UpdateMovement(dt);
-			Physics::BorderCollision(bounds, box);
+			box.GetRigidBody().UpdateMovement(dt);
+			box.GetRigidBody().BorderCollision(bounds, box.Size());
 		}
 
 
