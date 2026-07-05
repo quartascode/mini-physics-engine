@@ -2,11 +2,14 @@
 #include "raylib.h"
 #include "renderer.hpp"
 #include <vector>
+#include "physics.hpp"
 
 int main() {
 	SimCamera cam({0, 0}, 80.0f, 800, 600);
 
 	WorldBounds bounds(cam);
+
+	Physics sim(bounds);
 
 	Renderer renderer;
 
@@ -20,7 +23,7 @@ int main() {
 
 		for (Box& box : boxes) {
 			box.GetRigidBody().UpdateMovement(dt);
-			box.GetRigidBody().BorderCollision(bounds, box.Size());
+			sim.BorderCollision(box.GetRigidBody(), bounds, const Vec2 &size)
 		}
 
 

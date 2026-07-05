@@ -1,5 +1,6 @@
 #pragma once
 #include "box.hpp"
+#include "camera.hpp"
 #include <vector>
 
 class Renderer {

@@ -1,5 +1,5 @@
+#pragma once
 #include "vec2.hpp"
-#include "world.hpp"
 
 class RigidBody {
 	public:
