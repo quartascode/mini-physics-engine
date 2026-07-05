@@ -9,6 +9,7 @@ class RigidBody {
 			acceleration({0, -9.81}),
 			resultantForce({0, 0}),
 			mass(mass),
+			inverseMass(1.0 / mass),
 			restitution(restitution)
 			{}
 
@@ -25,5 +26,6 @@ class RigidBody {
 		Vec2 resultantForce;
 
 		float mass;
+		float inverseMass;
 		float restitution;
 };
