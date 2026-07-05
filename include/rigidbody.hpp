@@ -7,7 +7,7 @@ class RigidBody {
 			: position(position),
 			velocity({0, 0}),
 			acceleration({0, -9.81}),
-			force({0, 0}),
+			resultantForce({0, 0}),
 			mass(mass),
 			restitution(restitution)
 			{}
@@ -22,7 +22,7 @@ class RigidBody {
 		Vec2 position;
 		Vec2 velocity;
 		Vec2 acceleration;
-		Vec2 force;
+		Vec2 resultantForce;
 
 		float mass;
 		float restitution;
