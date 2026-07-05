@@ -29,8 +29,6 @@ class RigidBody {
 
 		void UpdateMovement(float dt);
 
-		void BorderCollision(const WorldBounds& bounds, const Vec2& size);
-
 	private:
 		Vec2 position;
 		Vec2 velocity;

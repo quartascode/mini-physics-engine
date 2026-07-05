@@ -8,8 +8,6 @@ class Physics {
 			worldBounds(bounds)
 		{}
 
-		void UpdateMovement(RigidBody& rb, float dt);
-
 		void BorderCollision(RigidBody& rb, const WorldBounds& bounds, const Vec2& size);
 
 	private:
