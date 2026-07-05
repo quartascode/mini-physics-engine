@@ -19,6 +19,10 @@ class RigidBody {
 
 		void SetVelocity(const Vec2& vel) { velocity = vel; }
 
+		void AddVelocity(const Vec2& vel) { velocity += vel; }
+
+		void Translate(const Vec2& v) { position += v; }
+
 		void UpdateMovement(float dt);
 
 		void BorderCollision(const WorldBounds& bounds, const Vec2& size);

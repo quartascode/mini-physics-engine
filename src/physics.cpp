@@ -1,9 +1,5 @@
 #include "physics.hpp"
 
-void Physics::UpdateMovement(RigidBody& rb, float dt) {
-	velocity += acceleration * dt;
-	position += velocity * dt;
-}
 
 void Physics::BorderCollision(RigidBody& rb, const WorldBounds& bounds, const Vec2& size){
 	float halfWidth = size.x / 2.0;
