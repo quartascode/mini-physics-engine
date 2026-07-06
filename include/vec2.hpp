@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 struct Vec2 {
 	float x;
 	float y;
@@ -20,5 +21,9 @@ struct Vec2 {
 		x += v.x;
 		y += v.y;
 		return *this;
+	}
+
+	float Length() const {
+		return sqrt(x * x + y * y);
 	}
 };	
