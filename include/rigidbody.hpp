@@ -19,6 +19,8 @@ class RigidBody {
 
 		float Restitution() const { return restitution; }
 
+		float Mass() const { return mass; }
+
 		void SetPosition(const Vec2& pos) { position = pos; }
 
 		void SetVelocity(const Vec2& vel) { velocity = vel; }

@@ -1,6 +1,6 @@
 #include "rigidbody.hpp"
 
 void RigidBody::UpdateMovement(float dt) {
-	velocity += acceleration * dt;
-	position += velocity * dt;
+	RigidBody::AddVelocity(acceleration * dt);
+	RigidBody::Translate(velocity * dt);
 }
