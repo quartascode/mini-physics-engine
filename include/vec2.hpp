@@ -26,4 +26,8 @@ struct Vec2 {
 	float Length() const {
 		return sqrt(x * x + y * y);
 	}
+
+	float LengthSquared() const {
+		return x * x + y * y;
+	}
 };	
