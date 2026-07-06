@@ -14,18 +14,18 @@ int main() {
 	Renderer renderer;
 
 	std::vector<Box> boxes;
-	boxes.emplace_back(Box(0.5, 0.5, BLUE, {0, 0}, 20, 1.0));
-	boxes.emplace_back(Box(1.0, 0.8, ORANGE, {-1, -1}, 90, 1.0));
+	boxes.emplace_back(Box(0.5, 0.5, BLUE, {0, 0}, 20, 0.5));
+	boxes.emplace_back(Box(1.0, 0.8, ORANGE, {-1, -1}, 90, 0.5));
 
 	while (!WindowShouldClose()) {
 
 		float dt = GetFrameTime();
 
-		for (Box& box : boxes) {
-			box.GetRigidBody().UpdateMovement(dt);
-			sim.BorderCollision(box.GetRigidBody(), box.Size());
-			for (Box& boxPrime : boxes) {
-				sim.BoxCollision(box, boxPrime);
+		for (int i = 0; i < boxes.size(); i++) {
+			boxes[i].GetRigidBody().UpdateMovement(dt);
+			sim.BorderCollision(boxes[i].GetRigidBody(), boxes[i].Size());
+			for (int j = i+1; j < boxes.size(); j++) {
+				sim.BoxCollision(boxes[i], boxes[j]);
 			}
 		}
 

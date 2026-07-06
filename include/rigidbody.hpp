@@ -5,8 +5,8 @@ class RigidBody {
 	public:
 		RigidBody(Vec2 position, float mass, float restitution)
 			: position(position),
-			velocity({0, 0}),
-			acceleration({9.81, -9.81}),
+			velocity({10, 0}),
+			acceleration({0, -9.81}),
 			resultantForce({0, 0}),
 			mass(mass),
 			inverseMass(1.0 / mass),
