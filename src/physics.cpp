@@ -12,18 +12,22 @@ void Physics::BorderCollision(RigidBody& rb, const Vec2& size) {
 	if (pos.x >= worldBounds.right - halfWidth) {
 		pos.x = worldBounds.right - halfWidth;
 		vel.x = -vel.x * rest;
+		collided = true;
 	}
-	if (rb.Position().x <= worldBounds.left + halfWidth) {
+	if (pos.x <= worldBounds.left + halfWidth) {
 		pos.x = worldBounds.left + halfWidth;
 		vel.x = -vel.x * rest;
+		collided = true;
 	}
-	if (rb.Position().y >= worldBounds.up - halfHeight) {
+	if (pos.y>= worldBounds.up - halfHeight) {
 		pos.y = worldBounds.up - halfHeight;
 		vel.y = -vel.y * rest;
+		collided = true;
 	}
-	if (rb.Position().y <= worldBounds.down + halfHeight) {
+	if (pos.y <= worldBounds.down + halfHeight) {
 		pos.y = worldBounds.down + halfHeight;
 		vel.y = -vel.y * rest;
+		collided = true;
 	}
 
 	if (collided) {

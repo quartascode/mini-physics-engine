@@ -11,7 +11,7 @@ class SimCamera {
 			  screenHeight(screenHeight)
 		{
 			InitWindow(screenWidth, screenHeight, "engine");
-			SetTargetFPS(60);
+			SetTargetFPS(180);
 		}
 
 		Vec2 WorldToScreen(const Vec2& v) const {

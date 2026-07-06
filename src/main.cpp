@@ -23,7 +23,7 @@ int main() {
 
 		for (Box& box : boxes) {
 			box.GetRigidBody().UpdateMovement(dt);
-			sim.BorderCollision(box.GetRigidBody(), bounds, const Vec2 &size)
+			sim.BorderCollision(box.GetRigidBody(), box.Size());
 		}
 
 
