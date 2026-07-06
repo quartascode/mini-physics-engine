@@ -24,6 +24,9 @@ int main() {
 		for (Box& box : boxes) {
 			box.GetRigidBody().UpdateMovement(dt);
 			sim.BorderCollision(box.GetRigidBody(), box.Size());
+			for (Box& boxPrime : boxes) {
+				sim.BoxCollision(box, boxPrime);
+			}
 		}
 
 

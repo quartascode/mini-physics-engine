@@ -1,6 +1,7 @@
 #include "physics.hpp"
 #include "rigidbody.hpp"
 #include "vec2.hpp"
+#include <algorithm>
 
 void Physics::BorderCollision(RigidBody& rb, const Vec2& size) {
 	float halfWidth = size.x / 2.0;
@@ -58,6 +59,43 @@ void Physics::BoxCollision(Box& a, Box& b) {
 	float deb = posb.y - sizeb.y / 2;
 
 	if (lea <= reb && rea >= leb && uea >= deb && dea <= ueb) {
+		Vec2 vela = rba.Velocity();
+		Vec2 velb = rbb.Velocity();
+		float resta = rba.Restitution();
+		float restb = rbb.Restitution();
+
+		float overlapLeft = rea - leb;
+		float overlapRight = reb - lea;
+		float overlapUp = uea - deb;
+		float overlapDown = ueb - dea;
+
+		float overlapX = std::min(overlapLeft, overlapRight);
+		float overlapY = std::min(overlapUp, overlapDown);
 		
+		if (overlapX < overlapY) {
+			// lateral collision
+			if (posa.x < posb.x) {
+				// a to the left of b
+				rba.Translate({-overlapX / 2, 0});
+				rbb.Translate({ overlapX / 2, 0});
+
+			} else {
+				rba.Translate({ overlapX / 2, 0});
+				rbb.Translate({-overlapX / 2, 0});
+			}
+			vela.x = -vela.x * resta;
+			velb.x = -velb.x * restb;
+		} else {
+			if (posa.y < posb.y) {
+				// a down b up
+				rba.Translate({0, -overlapY / 2});
+				rbb.Translate({0,  overlapY / 2});
+			} else {
+				rba.Translate({0,  overlapY / 2});
+				rbb.Translate({0, -overlapY / 2});
+			}
+			vela.y = -vela.y * resta;
+			velb.y = -velb.y * restb;
+		}
 	}
 }
