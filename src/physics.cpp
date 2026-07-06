@@ -1,4 +1,6 @@
 #include "physics.hpp"
+#include "rigidbody.hpp"
+#include "vec2.hpp"
 
 void Physics::BorderCollision(RigidBody& rb, const Vec2& size) {
 	float halfWidth = size.x / 2.0;
@@ -37,4 +39,25 @@ void Physics::BorderCollision(RigidBody& rb, const Vec2& size) {
 }
 
 void Physics::BoxCollision(Box& a, Box& b) {
+	RigidBody& rba = a.GetRigidBody();
+	RigidBody& rbb = b.GetRigidBody();
+	Vec2 posa = rba.Position();
+	Vec2 posb = rbb.Position();
+	Vec2 sizea = a.Size();
+	Vec2 sizeb = b.Size();
+
+	// four edges
+	float lea = posa.x - sizea.x / 2;
+	float rea = posa.x + sizea.x / 2;
+	float uea = posa.y + sizea.y / 2;
+	float dea = posa.y - sizea.y / 2;
+
+	float leb = posb.x - sizeb.x / 2;
+	float reb = posb.x + sizeb.x / 2;
+	float ueb = posb.y + sizeb.y / 2;
+	float deb = posb.y - sizeb.y / 2;
+
+	if (lea <= reb && rea >= leb && uea >= deb && dea <= ueb) {
+		
+	}
 }
