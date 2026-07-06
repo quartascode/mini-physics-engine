@@ -72,7 +72,7 @@ void Physics::BoxCollision(Box& a, Box& b) {
 		float overlapX = std::min(overlapLeft, overlapRight);
 		float overlapY = std::min(overlapUp, overlapDown);
 		
-		if (overlapX < overlapY) {
+		if (overlapX <= overlapY) {
 			// lateral collision
 			if (posa.x < posb.x) {
 				// a to the left of b
@@ -97,5 +97,7 @@ void Physics::BoxCollision(Box& a, Box& b) {
 			vela.y = -vela.y * resta;
 			velb.y = -velb.y * restb;
 		}
+		rba.SetVelocity(vela);
+		rbb.SetVelocity(velb);
 	}
 }

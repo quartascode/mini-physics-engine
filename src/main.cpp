@@ -14,8 +14,8 @@ int main() {
 	Renderer renderer;
 
 	std::vector<Box> boxes;
-	boxes.emplace_back(Box(0.5, 0.5, BLUE, {0, 0}, 20, 0.1));
-	boxes.emplace_back(Box(1.0, 0.8, ORANGE, {-1, -1}, 90, 0.1));
+	boxes.emplace_back(Box(0.5, 0.5, BLUE, {0, 0}, 20, 1.0));
+	boxes.emplace_back(Box(1.0, 0.8, ORANGE, {-1, -1}, 90, 1.0));
 
 	while (!WindowShouldClose()) {
 
