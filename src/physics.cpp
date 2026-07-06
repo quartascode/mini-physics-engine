@@ -35,3 +35,6 @@ void Physics::BorderCollision(RigidBody& rb, const Vec2& size) {
 		rb.SetVelocity(vel);
 	}
 }
+
+void Physics::BoxCollision(Box& a, Box& b) {
+}

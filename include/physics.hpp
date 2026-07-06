@@ -1,5 +1,6 @@
 #include "world.hpp"
 #include "rigidbody.hpp"
+#include "box.hpp"
 
 class Physics {
 	public:
@@ -9,6 +10,8 @@ class Physics {
 		{}
 
 		void BorderCollision(RigidBody& rb, const Vec2& size);
+
+		void BoxCollision(Box& a, Box& b);
 
 	private:
 		Vec2 gravityAccel;
